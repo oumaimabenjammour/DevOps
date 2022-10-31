@@ -1,6 +1,7 @@
 package tn.esprit.rh.achat.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +22,7 @@ import lombok.Setter;
 public class CategorieProduit implements Serializable {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -32,4 +33,13 @@ public class CategorieProduit implements Serializable {
 	@OneToMany(mappedBy = "categorieProduit")
 	@JsonIgnore
 	private Set<Produit> produits;
+
+	public CategorieProduit(String codeCategorie, String libelleCategorie) {
+		super();
+		this.codeCategorie = codeCategorie;
+		this.libelleCategorie = libelleCategorie;
+
+
+	}
 }
+
