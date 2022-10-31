@@ -9,14 +9,7 @@ pipeline{
         
         stages{
 
-                        stage('Pulling from Git')
-                        {
-                            steps 
-                            {
-                                echo 'downloading project ...'
-                                git branch:'backend_salsabil', url:'https://github.com/oumaimabenjammour/DevOps/tree/backend_salsabil'
-                            }
-                        }
+
                             stage('Testing process') {
                               steps {
                                script {
