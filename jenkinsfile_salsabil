@@ -10,7 +10,7 @@ pipeline{
         stages{
 
 
-                            stage('Testing process') {
+                            stage('Tests unitaires et Mocks') {
                               steps {
                                script {
                                 sh 'echo "Test is processing ...."'
@@ -21,7 +21,7 @@ pipeline{
 
                             }
 
-              stage('Quality Gate Status Check'){
+              stage('qualité de code (Sonarqube)'){
                   steps{
                       script{
 			      withSonarQubeEnv('sonar') {
@@ -38,10 +38,31 @@ pipeline{
                  	}
                	 }
               }
-		stage("Maven Build") {
+		stage("Build .jar") {
             steps {
                 script {
                     sh "mvn package -DskipTests=true"
+                }
+            }
+        }
+		        stage('Building Docker Image '){
+            steps{
+                script{
+                    sh 'docker build -t salsabil1/springprojet .'
+                }
+            }
+        }
+			        stage('Login to DockerHub '){
+            steps{
+                script{
+		withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                   sh 'docker login -u salsabil1 -p $dockerhubpwd docker.io'
+}                }
+            }
+        }
+	        stage('Pushing to Dockerhub'){
+            steps{
+                   sh 'docker push salsabil1/springprojet:latest'
                 }
             }
         }
