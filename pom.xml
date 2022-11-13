@@ -83,6 +83,20 @@
                      <artifactId>maven-resources-plugin</artifactId>
                      <version>3.1.0</version>
             </plugin>
+            
+            <plugin>
+            <groupId>com.baeldung</groupId>
+			<artifactId>maven-snapshot-repository</artifactId>
+			<version>1.0.0</version>
+			</plugin>
+	
+     
+     
+     <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-deploy-plugin</artifactId>
+  
+    </plugin>
 		</plugins>
 	</build>
 
