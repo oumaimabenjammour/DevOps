@@ -6,7 +6,10 @@ pipeline{
      maven 'M2_HOME'
   }
      
+ environment {
 
+         DOCKERHUB_CREDENTIALS = credentials('dockerhub')
+	 }
 	 
         stages{
 
@@ -39,6 +42,35 @@ pipeline{
 
 		 
 
+		       stage('Build docker image'){
+            steps{
+                script{
+                    sh 'docker build -t oumaima181/springprojet .'
+                }
+            }
+        }
+
+             stage("DockerLogin") {
+                steps {
+                sh 'docker login --username oumaima181 --password 181jFT2148*'
+                }
+                }
+
+   stage("DockerPush") {
+                 steps {
+                 sh 'docker push oumaima181/springprojet'
+                }
+                }
+           
+            
+             
+
+              stage("DockerCompose") {
+                 steps {
+                 sh 'docker-compose up -d '
+                }
+                }
+		    
 
         } 
 }
