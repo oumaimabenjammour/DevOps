@@ -38,7 +38,12 @@ public class ProduitMockServiceImp {
 	Produit prod4 = produitService.retrieveProduit((long)2);
 	Assertions.assertNotNull(prod4);
 	}
-
+	//@Test	
+	//public void testAddProduit() {
+	//Mockito.when(produitRepository.save(Mockito.any(Produit.class))).thenReturn(prod1);
+	
+	//Assertions.assertNotNull(prod1);
+	//}
 	
 	
 }
