@@ -44,14 +44,14 @@ pipeline {
             }
         }
         
-      /*  stage ('Mockito/Junit') {
+       stage ('Mockito/Junit') {
              steps {
             sh 'mvn test -Dtest="SecteurActiviteServiceImplMock" '
             sh 'mvn test -Dtest="FournisseurServiceImplTest" '
             }
         }
-        */
-      /*  
+        
+      
          stage ('Docker build') {
              steps {
             sh 'docker build -t syrineslimeni/achatback:latest .'
@@ -66,8 +66,6 @@ pipeline {
         
    
         
-       
-        
         stage ('Docker push'){
         	steps {
         	sh 'docker push syrineslimeni/achatback:latest'
@@ -79,7 +77,7 @@ pipeline {
                   sh "docker compose -f docker-compose.yml up -d  "
               }
         }
-        */
+        
         
        /* stage("Send Email"){
            steps{
