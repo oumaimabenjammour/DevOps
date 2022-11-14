@@ -28,7 +28,7 @@ pipeline{
 		       stage('Build docker image') {
             steps{
                 script{
-                    sh 'docker build -t oumaima181/springprojet .'
+                    sh 'docker build -t oumaima181/springprojet . '
                 }
             }
         }
