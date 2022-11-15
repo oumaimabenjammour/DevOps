@@ -10,8 +10,8 @@ pipeline {
             steps {
                 echo 'Pulling... ';
                     git branch: 'syrine',
-                        url : 'https://github.com/oumaimabenjammour/DevOps.git',
-                        credentialsId: 'fd1e6ce9-6f98-46ad-86d9-a9ba51695dc0';
+                        url : 'https://github.com/oumaimabenjammour/DevOps.git';
+                       
                         
             }
         }
