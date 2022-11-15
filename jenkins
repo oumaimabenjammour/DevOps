@@ -30,6 +30,8 @@ pipeline{
                 script{
                     sh 'docker build -t oumaima181/springprojet . '
                 }
+		
+		
             }
         }
 
@@ -53,7 +55,19 @@ pipeline{
                  sh 'docker-compose up -d '
                 }
                 }
-		    
-
-    }    
+		     }    
+		     post {
+		
+                success {
+                     mail to: "mouhamed.abidelli@esprit.tn",
+                            subject: "Build sucess",
+                            body: "sucess"
+                    echo 'successful'
+                }
+                failure {
+                     mail to: "oumaima.benjammour@esprit.tn",
+                            subject: "Build failed",
+                            body: "failed"
+                    echo 'failed'
+                }
 }
