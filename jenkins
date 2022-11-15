@@ -61,7 +61,7 @@ pipeline{
 		     post {
 		
                 success {
-                     mail to: "mouhamed.abidelli@esprit.tn",
+                     mail to: "oumaima.benjammour@esprit.tn",
                             subject: "Build sucess",
                             body: "sucess"
                     echo 'successful'
