@@ -11,7 +11,7 @@ pipeline {
                 echo 'Pulling... ';
                     git branch: 'syrine',
                         url : 'https://github.com/oumaimabenjammour/DevOps.git',
-                        credentialsId: '26d9c486-4d94-4e21-934c-069a820b9ecf';
+                        credentialsId: 'fd1e6ce9-6f98-46ad-86d9-a9ba51695dc0';
                         
             }
         }
