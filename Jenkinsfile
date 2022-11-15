@@ -1,10 +1,10 @@
 pipeline {
     agent any
     
-   /* environment {
+    environment {
     		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
     		}
-   */
+   
     stages {
         stage('Checkout GIT') {
             steps {
