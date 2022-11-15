@@ -54,7 +54,7 @@ pipeline {
       
          stage ('Docker build') {
              steps {
-            sh 'docker build -t syrineslimeni/achatback:latest .'
+            sh 'docker build -t syrineslimeni/tpAchatProject-1.0:latest .'
             }
         }
    
@@ -68,7 +68,7 @@ pipeline {
         
         stage ('Docker push'){
         	steps {
-        	sh 'docker push syrineslimeni/achatback:latest'
+        	sh 'docker push syrineslimeni/tpAchatProject-1.0:latest'
         	}
         }
         
