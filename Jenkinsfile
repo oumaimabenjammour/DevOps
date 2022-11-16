@@ -23,12 +23,12 @@ pipeline {
             }
         }
         
-        stage('Compiling the artifact') {             
-            steps {
-                echo "compiling"
-                sh 'mvn compile'
-            }
-        }
+      
+	        stage('Build') {
+      		    steps {
+        		sh 'mvn -B -DskipTests clean package'
+      		          }
+            	}
        
        stage("upload war to nexus") {
                                            steps {
