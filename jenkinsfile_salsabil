@@ -21,7 +21,7 @@ pipeline{
 
                             }
 
-              stage('qualité de code (Sonarqube)'){
+              stage('Sonarqube'){
                   steps{
                       script{
 			      withSonarQubeEnv('sonar') {
@@ -38,14 +38,14 @@ pipeline{
                  	}
                	 }
               }
-		stage("Build .jar") {
+		stage("Maven Build") {
             steps {
                 script {
                     sh "mvn package -DskipTests=true"
                 }
             }
         }
-		        stage('Building Docker Image '){
+		        stage('Image Docker '){
             steps{
                 script{
                     sh 'docker build -t salsabil1/springprojet .'
@@ -60,9 +60,14 @@ pipeline{
 }                }
             }
         }
-	        stage('Pushing to Dockerhub'){
+	        stage('Pushing image to Dockerhub'){
             steps{
                    sh 'docker push salsabil1/springprojet:latest'
+                }
+            }
+	    stage('Docker-compose'){
+            steps{
+                   sh 'docker-compose up -d'
                 }
             }
         }
