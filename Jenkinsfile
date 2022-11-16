@@ -31,12 +31,13 @@ pipeline {
                 sh 'mvn compile'
             }
         }
+        /*
         stage('Nexus') {      
             steps {
                 sh 'mvn deploy'
             }
-        }             
-      /* 
+        }   */          
+      
         stage('Code Quality Check via SonarQube') {
             steps {
                 script {
@@ -44,7 +45,7 @@ pipeline {
                 }
                
             }
-        }*/
+        }
                 
         
       /* stage ('Mockito/Junit') {
