@@ -1,5 +1,7 @@
 package tn.esprit.spring.service;
 
+import static org.mockito.Mockito.verify;
+
 import java.util.Date;
 import java.util.List;
 
@@ -26,7 +28,7 @@ public class ProduitTestServiceImp {
 	List<Produit> listProduits = up.retrieveAllProduits();
 	Assertions.assertEquals(0, listProduits.size());		
 	}
-
+	
 
 	
 }
