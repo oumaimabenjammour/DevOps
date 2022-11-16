@@ -22,7 +22,7 @@ pipeline {
                 sh 'mvn clean'
             }
         }
-        
+       
      
        
        stage('Compiling the artifact') {             
