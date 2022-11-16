@@ -23,13 +23,7 @@ pipeline {
             }
         }
         
-      stage('Compiling the artifact') {             
-            steps {
-                echo "compiling"
-                sh 'mvn compile'
-            }
-        }
-       
+     
        
        stage('Compiling the artifact') {             
             steps {
