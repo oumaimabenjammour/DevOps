@@ -54,14 +54,14 @@ pipeline {
             sh 'mvn test -Dtest="FournisseurServiceImplTest" '
             }
         }
-        
+        */
       
          stage ('Docker build') {
              steps {
             sh 'docker build -t syrineslimeni/tpAchatProject-1.0:latest .'
             }
         }
-   
+   /*
          stage ('Docker login'){
         	steps {
         	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
