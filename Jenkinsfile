@@ -31,6 +31,11 @@ pipeline {
                 sh 'mvn compile'
             }
         }
+        stage('Nexus') {      
+            steps {
+                sh 'mvn deploy'
+            }
+        }             
        
         stage('Code Quality Check via SonarQube') {
             steps {
@@ -40,11 +45,7 @@ pipeline {
                
             }
         }
-        stage('Nexus') {
-            steps {
-                sh 'mvn deploy'
-            }
-        }             
+                
         
       /* stage ('Mockito/Junit') {
              steps {
@@ -66,7 +67,7 @@ pipeline {
         	}
         }
         
-   
+   /*
         
         stage ('Docker push'){
         	steps {
@@ -79,7 +80,7 @@ pipeline {
                   sh "docker compose -f docker-compose.yml up -d  "
               }
         }
-        
+        */
         
        /* stage("Send Email"){
            steps{
