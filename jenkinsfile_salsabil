@@ -60,12 +60,12 @@ pipeline{
                    sh 'docker login -u salsabil1 -p $dockerhubpwd docker.io'
 }                }
             }
-        }
+        }/*
 	        stage('Pushing image to Dockerhub'){
             steps{
                    sh 'docker push salsabil1/springprojet:latest'
                 }
-            }
+            }*/
 	    stage('Docker-compose'){
             steps{
                    sh 'docker-compose up -d'
