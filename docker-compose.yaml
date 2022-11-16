@@ -1,8 +1,18 @@
 version: '3'
 services:
-
+  database:
+    image: mysql
+    container_name: mysqls
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: achatdb   
+    ports:
+      - 3306:3306
+    networks:
+     - AppNet
+     
   spring-boot:
-    image: salsabil1/springprojet
+    image: salsabil111/springprojet
     container_name: spring
     ports:
       - 8082:8082
