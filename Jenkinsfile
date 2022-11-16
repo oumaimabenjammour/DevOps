@@ -30,12 +30,24 @@ pipeline {
             }
         }
        
-        stage('Nexus') {
-            steps {
-                sh 'mvn deploy'
-            }
-        }           
-            
+       stage("upload war to nexus") {
+                                           steps {
+                                         nexusArtifactUploader artifacts:
+                                          [[
+                                          artifactId: 'achat',
+                                          classifier: '',
+                                          file: 'target/springprojet.jar',
+                                           type: 'jar']],
+                                            credentialsId: 'nexus',
+                                             groupId: 'tn.esprit.rh',
+                                             nexusUrl: '192.168.33.10:8081',
+                                              nexusVersion: 'nexus3',
+                                               protocol: 'http',
+                                                repository: 'maven-releases/',
+                                                version: '1.0'
+                                           }
+                                           }
+ 
         stage('Code Quality Check via SonarQube') {
             steps {
                 script {
