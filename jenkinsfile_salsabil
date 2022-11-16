@@ -9,7 +9,7 @@ pipeline{
         
         stages{
 
-
+/*
                             stage('Tests unitaires et Mocks') {
                               steps {
                                script {
@@ -38,6 +38,7 @@ pipeline{
                  	}
                	 }
               }
+	      */
 		stage("Maven Build") {
             steps {
                 script {
