@@ -42,7 +42,7 @@ public class CategorieProduitServiceImplTest {
     public void retrieveAllCategorieProduits()
     {
         List<CategorieProduit> listCategorie = cp.findAll();
-        Assertions.assertEquals(10, listCategorie.size());
+        Assertions.assertEquals(0, listCategorie.size());
     }
     @Test
     public void testDeleteCategorie()  {
