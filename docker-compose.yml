@@ -15,7 +15,7 @@ services:
       
    springboot-app:
 
-    image: achatdatabase/devops_project:lastest
+    image: hamzakacem/devops:lastest
     container_name: springbootApp
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/achatdb?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
