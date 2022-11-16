@@ -56,12 +56,13 @@ pipeline {
             }
         }
         */
-      
+      /*
          stage ('Docker build') {
              steps {
             sh 'docker build -t syrineslimeni/tpAchatProject-1.0:latest .'
             }
         }
+        */
    /*
          stage ('Docker login'){
         	steps {
