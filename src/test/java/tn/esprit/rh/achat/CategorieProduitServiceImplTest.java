@@ -2,6 +2,7 @@ package tn.esprit.rh.achat;
 
 
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -25,6 +27,7 @@ public class CategorieProduitServiceImplTest {
     ICategorieProduitService rs;
 
 
+
     @Test
     public void testAddCategorieProduit() {
         CategorieProduit produitCateg = new CategorieProduit("test", "test" );
@@ -34,6 +37,20 @@ public class CategorieProduitServiceImplTest {
 
     }
 
+
+    @Test
+    public void retrieveAllCategorieProduits()
+    {
+        List<CategorieProduit> listCategorie = cp.findAll();
+        Assertions.assertEquals(10, listCategorie.size());
+    }
+    @Test
+    public void testDeleteCategorie()  {
+        CategorieProduit c = new CategorieProduit("test", "test");
+        CategorieProduit savedSecteurActivite = rs.addCategorieProduit(c);
+        rs.deleteCategorieProduit(c.getIdCategorieProduit());
+        assertNull(rs.retrieveCategorieProduit(c.getIdCategorieProduit()));
+    }
 
 
 
