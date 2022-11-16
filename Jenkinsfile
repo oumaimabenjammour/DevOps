@@ -54,7 +54,7 @@ pipeline {
             sh 'mvn test -Dtest="FournisseurServiceImplTest" '
             }
         }
-        */
+        
       
          stage ('Docker build') {
              steps {
@@ -68,7 +68,7 @@ pipeline {
         	}
         }
         
-   /*
+   
         
         stage ('Docker push'){
         	steps {
