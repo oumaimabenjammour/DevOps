@@ -23,12 +23,7 @@ pipeline {
             }
         }
         
-      
-	        stage('Build') {
-      		    steps {
-        		sh 'mvn -B -DskipTests clean package'
-      		          }
-            	}
+    
        
        stage("upload war to nexus") {
                                            steps {
