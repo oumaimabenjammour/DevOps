@@ -40,12 +40,13 @@ pipeline {
                
             }
         } */
+        /*
         stage('Nexus') {      
             steps {
                 sh 'mvn deploy'
             }
         }            
-      
+      */
        
                 
         
@@ -56,14 +57,14 @@ pipeline {
             }
         }
         */
-      /*
+      
          stage ('Docker build') {
              steps {
             sh 'docker build -t syrineslimeni/tpAchatProject-1.0:latest .'
             }
         }
-        */
-   /*
+        
+   
          stage ('Docker login'){
         	steps {
         	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
@@ -83,7 +84,7 @@ pipeline {
                   sh "docker compose -f docker-compose.yml up -d  "
               }
         }
-        */
+        
         
        /* stage("Send Email"){
            steps{
