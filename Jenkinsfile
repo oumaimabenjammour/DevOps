@@ -31,14 +31,7 @@ pipeline {
                 sh 'mvn compile'
             }
         }
-        
-        stage('Nexus') {      
-            steps {
-                sh 'mvn deploy'
-            }
-        }            
-      
-        stage('Code Quality Check via SonarQube') {
+         stage('Code Quality Check via SonarQube') {
             steps {
                 script {
                        sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
@@ -46,6 +39,13 @@ pipeline {
                
             }
         }
+        stage('Nexus') {      
+            steps {
+                sh 'mvn deploy'
+            }
+        }            
+      
+       
                 
         
       /* stage ('Mockito/Junit') {
