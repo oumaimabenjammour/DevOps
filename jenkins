@@ -68,19 +68,5 @@ pipeline{
                 }
 		     } 
 		     
-		     post {
-		
-                success {
-                     mail to: "oumaima.benjammour@esprit.tn",
-                            subject: "Build sucess",
-                            body: "sucess"
-                    echo 'successful'
-                }
-                failure {
-                     mail to: "oumaima.benjammour@esprit.tn",
-                            subject: "Build failed",
-                            body: "failed"
-                    echo 'failed'
-               }
-	}
+		   
 }
