@@ -31,7 +31,7 @@ pipeline {
                 sh 'mvn compile'
             }
         }
-        /*
+   
          stage('Code Quality Check via SonarQube') {
             steps {
                 script {
@@ -39,7 +39,7 @@ pipeline {
                 }
                
             }
-        } */
+        } 
         /*
         stage('Nexus') {      
             steps {
@@ -50,7 +50,7 @@ pipeline {
        
                 
         
-      /* stage ('Mockito/Junit') {
+      /stage ('Mockito/Junit') {
              steps {
             sh 'mvn test -Dtest="SecteurActiviteServiceImplMock" '
             sh 'mvn test -Dtest="FournisseurServiceImplTest" '
