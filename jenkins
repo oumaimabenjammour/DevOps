@@ -48,7 +48,7 @@ pipeline{
 
              stage("DockerLogin") {
                 steps {
-                sh 'docker login --username syrineslimeni --password dockerhubb*'
+                sh 'docker login --username syrineslimeni --password dockerhubb'
                 }
                 }
 
