@@ -50,12 +50,14 @@ pipeline {
        */
                 
         
-      stage ('Mockito/Junit') {
-             steps {
-            sh 'mvn test -Dtest="SecteurActiviteServiceImplMock" '
-         
+   stage('JUnit/Mockito'){
+                steps {
+                sh '''mvn -version
+                mvn -B -DskipTests clean package'''
+                sh 'mvn test'
+           
+                }
             }
-        }
         
       
          stage ('Docker build') {
