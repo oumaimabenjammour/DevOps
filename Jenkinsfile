@@ -1,16 +1,17 @@
 pipeline {
     agent any
     
-   /* environment {
+    environment {
     		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
     		}
-   */
+   
     stages {
         stage('Checkout GIT') {
             steps {
                 echo 'Pulling... ';
                     git branch: 'syrine',
-                        url : 'https://github.com/oumaimabenjammour/DevOps.git'; 
+                        url : 'https://github.com/oumaimabenjammour/DevOps.git';
+                       
                         
             }
         }
@@ -21,42 +22,48 @@ pipeline {
                 sh 'mvn clean'
             }
         }
-        
-        stage('Compiling the artifact') {             
+       
+     
+       
+       stage('Compiling the artifact') {             
             steps {
                 echo "compiling"
                 sh 'mvn compile'
             }
         }
-       
-        stage('Nexus') {
-            steps {
-                sh 'mvn deploy'
-            }
-        }           
-            
-        stage('Code Quality Check via SonarQube') {
+   
+         stage('Code Quality Check via SonarQube') {
             steps {
                 script {
                        sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
                 }
                
             }
-        }
+        } 
+        /*
+        stage('Nexus') {      
+            steps {
+                sh 'mvn deploy'
+            }
+        }            
+      
+       */
+                
         
-      /* stage ('Mockito/Junit') {
+      stage ('Mockito/Junit') {
              steps {
             sh 'mvn test -Dtest="SecteurActiviteServiceImplMock" '
             sh 'mvn test -Dtest="FournisseurServiceImplTest" '
             }
         }
-        */
+        
       
          stage ('Docker build') {
              steps {
-            sh 'docker build -t syrineslimeni/achatback:latest .'
+            sh 'docker build -t syrineslimeni/tpAchatProject-1.0:latest .'
             }
         }
+        
    
          stage ('Docker login'){
         	steps {
@@ -68,7 +75,7 @@ pipeline {
         
         stage ('Docker push'){
         	steps {
-        	sh 'docker push syrineslimeni/achatback:latest'
+        	sh 'docker push syrineslimeni/tpAchatProject-1.0:latest'
         	}
         }
         
@@ -79,11 +86,11 @@ pipeline {
         }
         
         
-       /* stage("Send Email"){
+        stage("Send Email"){
            steps{
                emailext attachLog: true, body: "${env.BUILD_URL} has result ${currentBuild.result}", compressLog: true, subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: 'syrine.slimeni@esprit.tn'
            }
-       }*/
+       }
         
      
       }
@@ -93,7 +100,7 @@ pipeline {
       		sh 'docker logout'
       		emailext attachLog: true, body: "${env.BUILD_URL} has result ${currentBuild.result}", compressLog: true, subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: 'syrine.slimeni@esprit.tn'
           	emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
-  		//
+  		
       	}
       	
       }
