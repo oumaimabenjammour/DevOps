@@ -33,7 +33,7 @@ public class ClientServiceImplTest {
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Date dateNaissance = dateFormat.parse("30/09/2000");
-		Client c = new Client("Salhi", "Ahmed", dateNaissance, "ahmed.salhi@esprit.tn", "pwd", Profession.Cadre,
+		Client c = new Client("Slimeni", "Syrine", dateNaissance, "syrine.slimeni@esprit.tn", "pwd", Profession.Cadre,
 				CategorieClient.Ordinaire);
 		Client client = clientService.addClient(c);
 		System.out.print("client "+client);
@@ -47,7 +47,7 @@ public class ClientServiceImplTest {
 	public void testDeleteClient() throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Date dateNaissance = dateFormat.parse("30/09/2000");
-		Client c = new Client("Salhi", "Ahmed", dateNaissance, "ahmed.salhi@esprit.tn", "pwd", Profession.Cadre,
+		Client c = new Client("SLimeni", "Syrine", dateNaissance, "syrine.slimeni@esprit.tn", "pwd", Profession.Cadre,
 				CategorieClient.Ordinaire);
 		Client client = clientService.addClient(c);
 		clientService.deleteClient(client.getIdClient());
@@ -60,7 +60,7 @@ public class ClientServiceImplTest {
 		Date dateNaissance = dateFormat.parse("30/09/2000");
 		List<Client> clients = clientService.retrieveAllClients();
 		int expected = clients.size();
-		Client c = new Client("Salhi", "Ahmed", dateNaissance, "ahmed.salhi@esprit.tn", "pwd", Profession.Cadre,
+		Client c = new Client("Slimeni", "Syrine", dateNaissance, "syrine.slimeni@esprit.tn", "pwd", Profession.Cadre,
 				CategorieClient.Ordinaire);
 		Client client = clientService.addClient(c);
 		assertEquals(expected + 1, clientService.retrieveAllClients().size());
