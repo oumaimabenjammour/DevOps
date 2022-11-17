@@ -1,0 +1,86 @@
+pipeline{
+
+      agent any
+        tools {
+     jdk 'JAVA_HOME'
+     maven 'M2_HOME'
+  }
+     
+ environment {
+
+         DOCKERHUB_CREDENTIALS = credentials('dockerhub')
+	 }
+	 
+        stages{
+
+            
+
+
+	        stage('Build') {
+      		    steps {
+        		sh 'mvn -B -DskipTests clean package'
+      		          }
+            	}
+		
+		
+		 stage('JUnit/Mockito'){
+                steps {
+                sh '''mvn -version
+                mvn -B -DskipTests clean package'''
+                sh 'mvn test'
+                echo """Bravo! tous les tests sont pris en charge"""
+                }
+            }
+           
+		     
+		 
+
+		       stage('Build docker image') {
+            steps{
+                script{
+                    sh 'docker build -t oumaima181/springprojet . '
+                }
+		
+		
+		
+            }
+        }
+
+             stage("DockerLogin") {
+                steps {
+                sh 'docker login --username oumaima181 --password 181jFT2148*'
+                }
+                }
+
+   stage("DockerPush") {
+                 steps {
+                 sh 'docker push oumaima181/springprojet'
+                }
+                }
+           
+            
+             
+
+              stage("DockerCompose") {
+                 steps {
+                 sh 'docker-compose up -d '
+                }
+                }
+		     } 
+		     
+		     post {
+		
+                success {
+                     mail to: "oumaima.benjammour@esprit.tn",
+                            subject: "Build sucess",
+                            body: "sucess"
+                    echo 'successful'
+                }
+                failure {
+                     mail to: "oumaima.benjammour@esprit.tn",
+                            subject: "Build failed",
+                            body: "failed"
+                    echo 'failed'
+               }
+	}
+}
