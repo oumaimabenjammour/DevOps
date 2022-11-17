@@ -46,7 +46,7 @@ pipeline {
                 sh 'mvn deploy'
             }
         }            
-      */
+      
        
                 
         
@@ -56,7 +56,7 @@ pipeline {
             sh 'mvn test -Dtest="FournisseurServiceImplTest" '
             }
         }
-        */
+        
       
          stage ('Docker build') {
              steps {
@@ -86,11 +86,11 @@ pipeline {
         }
         
         
-       /* stage("Send Email"){
+        stage("Send Email"){
            steps{
                emailext attachLog: true, body: "${env.BUILD_URL} has result ${currentBuild.result}", compressLog: true, subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: 'syrine.slimeni@esprit.tn'
            }
-       }*/
+       }
         
      
       }
@@ -100,7 +100,7 @@ pipeline {
       		sh 'docker logout'
       		emailext attachLog: true, body: "${env.BUILD_URL} has result ${currentBuild.result}", compressLog: true, subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: 'syrine.slimeni@esprit.tn'
           	emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
-  		//
+  		
       	}
       	
       }
