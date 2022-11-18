@@ -14,7 +14,11 @@ pipeline{
         stages{
 
             
-
+stage('Clean') {
+                 steps{
+                    sh "mvn -B -DskipTests clean  "
+                    }
+                }
 
 	     stage('Build') {
       		    steps {
@@ -22,11 +26,7 @@ pipeline{
       		          }
             	}
 		
-		stage('Clean') {
-                 steps{
-                    sh "mvn -B -DskipTests clean  "
-                    }
-                }
+		
 		
 		/*
 		
