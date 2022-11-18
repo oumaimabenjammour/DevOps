@@ -40,7 +40,7 @@ stage('Clean') {
 		
             }
   
-		  
+		     */
 		     stage("Test statique SonarQube Analysis") {
                        steps {
                          withSonarQubeEnv('sonar') {
@@ -50,7 +50,7 @@ stage('Clean') {
                      }
 		  
 		   
-		   
+		   */
 		   
 	 stage("upload war to nexus") {
                                            steps {
