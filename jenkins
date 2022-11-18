@@ -63,7 +63,39 @@ stage('Clean') {
                                            }
                                            }
 	
-	
+	    stage('Build docker image'){
+            steps{
+                script{
+                    sh 'docker build -t syrineslimeni/springprojet .'
+                }
+            }
+        }
+
+             stage("DockerLogin") {
+                steps {
+                sh 'docker login --username syrineslimeni --password dockerhubb'
+                }
+                }
+		
+
+
+   stage("DockerPush") {
+                 steps {
+                 sh 'docker push syrineslimeni/springprojet'
+                }
+                }
+           
+             stage("DockerCompose") {
+                 steps {
+                 sh 'docker-compose up -d '
+                }
+                }
+             
+            
+		     
+		 
+
+
 	
 	}
 }
