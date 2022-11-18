@@ -50,7 +50,7 @@ stage('Clean') {
                      }
 		  
 		   
-		   */
+	/*
 		   
 	 stage("upload war to nexus") {
                                            steps {
