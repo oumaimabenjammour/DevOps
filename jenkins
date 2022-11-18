@@ -45,9 +45,7 @@ stage('Clean') {
 		   
 		   
 		   
-		   
-		   
-		   stage("upload livrable /nexus") {
+	 stage("upload war to nexus") {
                                            steps {
                                          nexusArtifactUploader artifacts:
                                           [[
@@ -62,9 +60,8 @@ stage('Clean') {
                                                protocol: 'http',
                                                 repository: 'simpleapp-release/',
                                                 version: '1.0'
-                                           } 
                                            }
-	
+                                           }
 	
 	
 	
