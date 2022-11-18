@@ -22,8 +22,14 @@ pipeline{
       		          }
             	}
 		
+		stage('Clean') {
+                 steps{
+                    sh "mvn -B -DskipTests clean  "
+                    }
+                }
 		
-		 stage('JUnit/Mockito'){
+		
+		 stage('Test unitaire JUnit/Mockito'){
                 steps {
                 sh '''mvn -version
                 mvn -B -DskipTests clean package'''
@@ -33,7 +39,7 @@ pipeline{
             }
 	    
 	    /*
-	    stage("SonarQube Analysis") {
+	    stage("Test statique SonarQube Analysis") {
                        steps {
                          withSonarQubeEnv('sonar') {
                            sh 'mvn clean -DskipTests package sonar:sonar'
@@ -44,7 +50,7 @@ pipeline{
 		*/ 
 
 		
-		stage("upload war to nexus") {
+		stage("upload livrable /nexus") {
                                            steps {
                                          nexusArtifactUploader artifacts:
                                           [[
