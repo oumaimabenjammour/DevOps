@@ -39,9 +39,16 @@ stage('Clean') {
                 }
 		
             }
-           */
+  
 		  
-		   
+		     stage("Test statique SonarQube Analysis") {
+                       steps {
+                         withSonarQubeEnv('sonar') {
+                           sh 'mvn clean -DskipTests package sonar:sonar'
+                         }
+                       }
+                     }
+		  
 		   
 		   
 		   
@@ -62,6 +69,7 @@ stage('Clean') {
                                                 version: '1.0'
                                            }
                                            }
+					            */
 	
 	    stage('Build docker image'){
             steps{
