@@ -34,7 +34,7 @@ pipeline{
             }
            
 		    
-		  stage("SonarQube Analysis") {
+		  stage("Code Quality Check via SonarQube") {
                        steps {
                          withSonarQubeEnv('sonar') {
                            sh 'mvn clean -DskipTests package sonar:sonar'
@@ -49,7 +49,7 @@ pipeline{
             }
         }        */
 
-		       stage('Build docker image') {
+		       stage('Docker build ') {
             steps{
                 script{
                     sh 'docker build -t syrineslimeni/springprojet . '
