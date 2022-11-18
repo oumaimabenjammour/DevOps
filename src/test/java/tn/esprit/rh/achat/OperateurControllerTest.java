@@ -32,7 +32,7 @@ class OperateurControllerTest {
     @InjectMocks
     OperateurServiceImpl operateurService;
 
-    Operateur operateur1 = new Operateur(2L,"ala","karmous","devops",null);
+    Operateur operateur1 = new Operateur(2L,"taher","belakther","devops",null);
 
     Long getId()
     {
@@ -48,8 +48,8 @@ class OperateurControllerTest {
         List<Operateur> LOperateur = new ArrayList<>();
         for (Long i=1L;i<=10L;i++) {
             operateur.setIdOperateur(i);
-            operateur.setPrenom("mohamed");
-            operateur.setNom("abdelli");
+            operateur.setPrenom("Oumaima");
+            operateur.setNom("jammour");
             operateur.setPassword("devops");
             Operateur op=operateurRepository.save(operateur);
             LOperateur.add(op);
