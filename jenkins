@@ -23,22 +23,13 @@ pipeline{
                         
             }
         }
-	
-	stage('Cleaning the project') {     
-            steps {
-                    sh 'mvn -B -DskipTests clean package'
-
-            }
-        }
-       
 
 
-	       stage('Compiling the artifact') {             
-            steps {
-                echo "compiling"
-                sh 'mvn compile'
-            }
-        }
+	        stage('Build') {
+      		    steps {
+        		sh 'mvn -B -DskipTests clean package'
+      		          }
+            	}
 		
 		
 		 stage('JUnit/Mockito'){
@@ -52,22 +43,15 @@ pipeline{
             }
            
 		     
-		  stage("Code Quality Check via SonarQube") {
+		  stage("SonarQube Analysis") {
                        steps {
                          withSonarQubeEnv('sonar') {
-                           sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar
+                           sh 'mvn clean -DskipTests package sonar:sonar'
                          }
                        }
                      }
-		     
-		     
-		     stage('Nexus') {      
-            steps {
-                sh 'mvn deploy'
-            }
-        }            
 
-		       stage('Docker build') {
+		       stage('Build docker image') {
             steps{
                 script{
                     sh 'docker build -t syrineslimeni/springprojet . '
@@ -90,14 +74,7 @@ pipeline{
                 }
                 }
            
-            stage("Send Email"){
-           steps{
-               emailext attachLog: true, body: "${env.BUILD_URL} has result ${currentBuild.result}", compressLog: true, subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: 'syrine.slimeni@esprit.tn'
-           }
-       }
-        
-     
-      }
+            
              
 
               stage("DockerCompose") {
@@ -107,13 +84,5 @@ pipeline{
                 }
 		     } 
 		     
-		      post {
-      	always {
-      		sh 'docker logout'
-      		emailext attachLog: true, body: "${env.BUILD_URL} has result ${currentBuild.result}", compressLog: true, subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: 'syrine.slimeni@esprit.tn'
-          	emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
-  		
-      	}
-      	
-      }   
+		   
 }
