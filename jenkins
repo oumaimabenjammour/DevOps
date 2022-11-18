@@ -28,7 +28,7 @@ pipeline{
                 sh '''mvn -version
                 mvn -B -DskipTests clean package'''
                 sh 'mvn test'
-                echo """les tests sont pris en charge"""
+                echo """les tests sont chargés"""
                 }
 		
             }
@@ -48,7 +48,7 @@ pipeline{
                 sh 'mvn deploy'
             }
         }        */
-	stage("upload war to nexus") {
+	stage(" nexus") {
                                            steps {
                                          nexusArtifactUploader artifacts:
                                           [[
