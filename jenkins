@@ -68,49 +68,5 @@ stage('Clean') {
 	
 	
 	
-	
-	
-		       stage('Docker build ') {
-            steps{
-                script{
-                    sh 'docker build -t syrineslimeni/springprojet . '
-                }
-		
-		
-		
-            }
-        }
-
-             stage("DockerLogin") {
-                steps {
-                sh 'docker login --username syrineslimeni --password dockerhubb'
-                }
-                }
-
-  	 stage("DockerPush") {
-                 steps {
-                 sh 'docker push syrineslimeni/springprojet'
-                }
-                }
-           
-            
-             
-
-              stage("DockerCompose") {
-                 steps {
-                 sh 'docker-compose up -d '
-                }
-	
-                }
-		     } 
-		  /*   
-		     stage("Send Email"){
-           steps{
-               emailext attachLog: true, body: "${env.BUILD_URL} has result ${currentBuild.result}", compressLog: true, subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: 'syrine.slimeni@esprit.tn'
-           }
-       }
-        
-     
-      }*/
-		   
+	}
 }
