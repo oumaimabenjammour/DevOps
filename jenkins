@@ -14,15 +14,6 @@ pipeline{
         stages{
 
             
-		stage('Checkout GIT') {
-            steps {
-                echo 'Pulling... ';
-                    git branch: 'syrine',
-                        url : 'https://github.com/oumaimabenjammour/DevOps.git';
-                       
-                        
-            }
-        }
 
 
 	        stage('Build') {
