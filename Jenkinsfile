@@ -83,13 +83,13 @@ pipeline {
 	       }
        */
     }
-    post {
-      	/*always {
+    /*post {
+      	always {
       		sh 'docker logout'
       		emailext attachLog: true, body: "${env.BUILD_URL} has result ${currentBuild.result}", compressLog: true, subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: 'marouen.karoui@esprit.tn'
           	emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
   		
-      	}*/
+      	}
       }
-      
+      */
 }
