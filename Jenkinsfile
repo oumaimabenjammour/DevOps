@@ -3,6 +3,9 @@ pipeline {
 	/*environment {
     		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
     		}*/
+    tools {
+    		maven 'Maven'
+    	}
     stages {
         stage('Checkout GIT') {
             steps {
