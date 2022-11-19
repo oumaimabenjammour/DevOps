@@ -19,10 +19,9 @@ pipeline {
              
              
             steps {
-            withMaven {
                 echo 'cleaning project ...'
+                sh 'mvn -version'
                 sh 'mvn clean'
-                }
             }
         }
         
