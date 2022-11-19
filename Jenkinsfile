@@ -1,8 +1,8 @@
 pipeline {
     agent any
-	/*environment {
+	environment {
     		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
-    		}*/
+    		}
     stages {
         stage('Checkout GIT') {
             steps {
@@ -34,7 +34,7 @@ pipeline {
                 sh 'mvn deploy'
             }
         }  
-        /*stage('Code Quality Check via SonarQube') {
+        stage('Code Quality Check via SonarQube') {
             steps {
                 script {
                         sh 'mvn sonar:sonar -Dsonar.host.url=http://http://192.168.43.123:9000 -Dsonar.login=admin -Dsonar.password=sonar.'
@@ -49,6 +49,7 @@ pipeline {
             sh 'mvn test -Dtest="ReglementServiceImpTest" '
             }
         }
+        /*
         stage('Docker build')
         {
             steps {
@@ -72,8 +73,8 @@ pipeline {
         	sh 'docker push $DOCKERHUB_CREDENTIALS_USR/tpachatproject-1.0:latest'
         	}
         }
-        */
-        /*stage('mailling'){
+        
+        stage('mailling'){
 	           steps {
 		            mail bcc: '', body: '''Hello from Jenkins,
 		            Devops Pipeline returned success.
@@ -82,13 +83,13 @@ pipeline {
 	       }
        */
     }
-    /*post {
-      	always {
+    post {
+      	/*always {
       		sh 'docker logout'
       		emailext attachLog: true, body: "${env.BUILD_URL} has result ${currentBuild.result}", compressLog: true, subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: 'marouen.karoui@esprit.tn'
           	emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
   		
-      	}
-      }*/
+      	}*/
+      }
       }
 }
