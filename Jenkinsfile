@@ -29,13 +29,12 @@ pipeline {
                
             }
         } 
-        /*
         stage('Nexus') {
             steps {
                 sh 'mvn deploy'
             }
         }  
-        stage('Code Quality Check via SonarQube') {
+        /*stage('Code Quality Check via SonarQube') {
             steps {
                 script {
                         sh 'mvn sonar:sonar -Dsonar.host.url=http://http://192.168.43.123:9000 -Dsonar.login=admin -Dsonar.password=sonar.'
@@ -73,17 +72,17 @@ pipeline {
         	sh 'docker push $DOCKERHUB_CREDENTIALS_USR/tpachatproject-1.0:latest'
         	}
         }
-        
-        stage('mailling'){
+        */
+        /*stage('mailling'){
 	           steps {
 		            mail bcc: '', body: '''Hello from Jenkins,
 		            Devops Pipeline returned success.
 		            Best Regards''', cc: '', from: 'louatisahar23@gamil.com', replyTo: '', subject: 'Devops Pipeline', to: 'sahar.louati@esprit.tn'
 	            }
 	       }
-       
+       */
     }
-    post {
+    /*post {
       	always {
       		sh 'docker logout'
       		emailext attachLog: true, body: "${env.BUILD_URL} has result ${currentBuild.result}", compressLog: true, subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: 'marouen.karoui@esprit.tn'
