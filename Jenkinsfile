@@ -16,8 +16,10 @@ pipeline {
              
              
             steps {
+            withMaven {
                 echo 'cleaning project ...'
                 sh 'mvn clean'
+                }
             }
         }
         
