@@ -29,12 +29,12 @@ pipeline {
                
             }
         } 
-        stage('Nexus') {
+        /*stage('Nexus') {
             steps {
                 sh 'mvn deploy'
             }
-        }  
-        /*stage('Code Quality Check via SonarQube') {
+        }  */
+        stage('Code Quality Check via SonarQube') {
             steps {
                 script {
                         sh 'mvn sonar:sonar -Dsonar.host.url=http://http://192.168.43.123:9000 -Dsonar.login=admin -Dsonar.password=sonar.'
@@ -43,7 +43,7 @@ pipeline {
             }
         }
            
-     stage ('Mockito/Junit') {
+     /*stage ('Mockito/Junit') {
              steps {
             sh 'mvn test -Dtest="FactureServiceImplMockito" '
             sh 'mvn test -Dtest="ReglementServiceImpTest" '
