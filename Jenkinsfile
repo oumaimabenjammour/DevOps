@@ -37,7 +37,7 @@ pipeline {
         stage('Code Quality Check via SonarQube') {
             steps {
                 script {
-                        sh 'mvn sonar:sonar -Dsonar.host.url=http://http://192.168.43.123:9000 -Dsonar.login=admin -Dsonar.password=sonar.'
+                        sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar.'
 						}
                
             }
