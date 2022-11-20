@@ -34,21 +34,21 @@ pipeline {
                 sh 'mvn deploy'
             }
         }  */
-        stage('Code Quality Check via SonarQube') {
+        /*stage('Code Quality Check via SonarQube') {
             steps {
                 script {
                         sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
 						}
                
             }
-        }
-           
-     /*stage ('Mockito/Junit') {
-             steps {
-            sh 'mvn test -Dtest="FactureServiceImplMockito" '
-            sh 'mvn test -Dtest="ReglementServiceImpTest" '
-            }
         }*/
+           
+     stage ('Mockito/Junit') {
+             steps {
+            //sh 'mvn test -Dtest="FactureServiceImplMockito" '
+            sh 'mvn test -Dtest="StockServiceImpTest" '
+            }
+        }
         /*
         stage('Docker build')
         {
