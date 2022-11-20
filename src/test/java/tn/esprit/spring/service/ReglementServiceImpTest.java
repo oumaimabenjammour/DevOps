@@ -16,10 +16,11 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.esprit.examen.entities.Facture;
-import com.esprit.examen.entities.Reglement;
-import com.esprit.examen.repositories.FactureRepository;
-import com.esprit.examen.repositories.ReglementRepository;
+import tn.esprit.rh.achat.entities.Facture;
+import tn.esprit.rh.achat.entities.Reglement;
+import tn.esprit.rh.achat.repositories.FactureRepository;
+import tn.esprit.rh.achat.repositories.ReglementRepository;
+import tn.esprit.rh.achat.services.ReglementServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
 class ReglementServiceImpTest {
