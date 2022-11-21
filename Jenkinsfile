@@ -67,24 +67,12 @@ pipeline {
         }
          stage('Docker compose ') {
               steps {
-                  sh 'docker compose docker-compose.yml up'
+                  sh 'docker-compose up -d'
               }
         }
        
-        
-        
-        
-        
-        /*stage('mailling'){
-	           steps {
-		            mail bcc: '', body: '''Hello from Jenkins,
-		            Devops Pipeline returned success.
-		            Best Regards''', cc: '', from: 'louatisahar23@gamil.com', replyTo: '', subject: 'Devops Pipeline', to: 'sahar.louati@esprit.tn'
-	            }
-	       }
-       */
     }
-    /*post {
+    post {
       	always {
       		sh 'docker logout'
       		emailext attachLog: true, body: "${env.BUILD_URL} has result ${currentBuild.result}", compressLog: true, subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: 'marouen.karoui@esprit.tn'
@@ -92,5 +80,5 @@ pipeline {
   		
       	}
       }
-      */
+      
 }
