@@ -62,7 +62,7 @@ pipeline {
         }
          stage('Docker compose ') {
               steps {
-                  sh "docker compose docker-compose.yml up -d  "
+                  sh "docker compose docker-compose.yml up "
               }
         }
        
