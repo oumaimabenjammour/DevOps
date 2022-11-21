@@ -41,13 +41,13 @@ pipeline {
 						}
                
             }
-        }*/
+        }
            
      stage ('Mockito/Junit') {
              steps {
             sh 'mvn test -Dtest="ReglementServiceImpTest" '
             }
-        }
+        }*/
         
         stage('Docker build')
         {
