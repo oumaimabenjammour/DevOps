@@ -29,11 +29,11 @@ pipeline {
                
             }
         } 
-        /*stage('Nexus') {
+        stage('Nexus') {
             steps {
                 sh 'mvn deploy'
             }
-        }  */
+        } 
         /*stage('Code Quality Check via SonarQube') {
             steps {
                 script {
