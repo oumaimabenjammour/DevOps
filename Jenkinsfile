@@ -60,17 +60,18 @@ pipeline {
         	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
         	}
         }
-         stage('Docker compose ') {
-              steps {
-                  sh "docker compose docker-compose.yml up "
-              }
-        }
-       
-        
         stage ('Docker push'){
         	steps {
         	sh 'docker push $DOCKERHUB_CREDENTIALS_USR/achat:latest'
         	}
+         stage('Docker compose ') {
+              steps {
+                  sh 'docker compose docker-compose.yml up'
+              }
+        }
+       
+        
+        
         }
         
         /*stage('mailling'){
