@@ -34,7 +34,7 @@ pipeline {
                 sh 'mvn deploy'
             }
         } 
-        /*stage('Code Quality Check via SonarQube') {
+        stage('Code Quality Check via SonarQube') {
             steps {
                 script {
                         sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
@@ -47,7 +47,7 @@ pipeline {
              steps {
             sh 'mvn test -Dtest="ReglementServiceImpTest" '
             }
-        }*/
+        }
         
         stage('Docker build')
         {
