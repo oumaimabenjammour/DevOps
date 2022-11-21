@@ -64,6 +64,7 @@ pipeline {
         	steps {
         	sh 'docker push $DOCKERHUB_CREDENTIALS_USR/achat:latest'
         	}
+        }
          stage('Docker compose ') {
               steps {
                   sh 'docker compose docker-compose.yml up'
@@ -72,7 +73,7 @@ pipeline {
        
         
         
-        }
+        
         
         /*stage('mailling'){
 	           steps {
