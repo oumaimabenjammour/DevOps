@@ -30,7 +30,7 @@ class ReglementServiceImpTest {
 	@InjectMocks
 	ReglementServiceImpl reglementServiceImpl;
 	
-	//initializer des objet
+	
 	Reglement reglement= new Reglement ((long)1,(float)2.365,(float)3.252,true,new Date(),null);
 
 	List<Reglement> r = new ArrayList<Reglement>() {

@@ -48,11 +48,11 @@ pipeline {
             sh 'mvn test -Dtest="ReglementServiceImpTest" '
             }
         }
-        /*
+        
         stage('Docker build')
         {
             steps {
-                 sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/tpachatproject-1.0:latest .'
+                 sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/achat:latest .'
             }
         }
          stage ('Docker login'){
@@ -69,11 +69,11 @@ pipeline {
         
         stage ('Docker push'){
         	steps {
-        	sh 'docker push $DOCKERHUB_CREDENTIALS_USR/tpachatproject-1.0:latest'
+        	sh 'docker push $DOCKERHUB_CREDENTIALS_USR/achat:latest'
         	}
         }
         
-        stage('mailling'){
+        /*stage('mailling'){
 	           steps {
 		            mail bcc: '', body: '''Hello from Jenkins,
 		            Devops Pipeline returned success.
